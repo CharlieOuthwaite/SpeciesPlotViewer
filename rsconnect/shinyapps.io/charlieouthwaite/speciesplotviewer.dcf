@@ -1,0 +1,12 @@
+name: speciesplotviewer
+title:
+username:
+account: charlieouthwaite
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 362202
+bundleId: 1442713
+url: https://charlieouthwaite.shinyapps.io/speciesplotviewer/
+when: 1529659825.98928
+asMultiple: FALSE
+asStatic: FALSE
