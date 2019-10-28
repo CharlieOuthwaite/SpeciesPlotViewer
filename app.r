@@ -4,6 +4,7 @@
 #*save the following code in a file named app.R *
 library(shiny)
 library(rsconnect)
+library(DT)
 
 ##Section 1 ____________________________________________________
 #load your data or create a data table as follows:
@@ -39,12 +40,37 @@ ui = shinyUI(
         represents whether the estimate has converged or not.  Grey points along the top of the plot
         represent those year with data contributing to the estimate in that year, years without data
         are estimated as a combination of a prior and data in the surrounding years.  Please see
-        the data paper and my paper in Ecological Indicators for details on the methods.
+        the relevant papers for details on methods.
         
         "),
       
       
-      imageOutput("sp_plot") #put plot item in main area
+      imageOutput("sp_plot"), #put plot item in main area
+      
+      h3("Data information and species trend"),
+
+      # the table of info 
+      DT::dataTableOutput("table"),
+      
+      
+      # description of info in the table
+      p("The table presents some information associated with the selected species. This includes
+        the group and species name, the number of years of data meeting the modelling criteria, 
+        the first and last year of data, the total number of records of this species used in 
+        the model run, the mean growth rate (calculated as the annual percentage growth rate)
+        including the upper and lower credible intervals of this estimates and the associated
+        precision."),
+      
+      
+      h3("References"),
+      
+      
+      p("If you use the data presented in this app or in the associated papers, please use
+        the following citations:
+        
+        ")
+      
+      
       )
     ) )
 
@@ -104,12 +130,27 @@ server = shinyServer(function(input, output) {
       src = plot_file,
       filetype = "png",
       alt = "Species plot",
-      width = 600, 
-      height = 600
+      width = 400, 
+      height = 400
     ))
     
     
+    
   }, delete = FALSE)
+  
+  
+  
+  # creating the data table by using selected species
+  output$table <- DT::renderDataTable(DT::datatable({
+    data <- good_sp
+    
+    data <- data[data$Species == input$species_name, ] 
+    
+    data[, 7:10] <- round(data[, 7:10], 3)
+    #data <- data[data$Species == "Formica aquilonia", ]        
+    
+    data
+  }))
   
   
 })#close the shinyServer
