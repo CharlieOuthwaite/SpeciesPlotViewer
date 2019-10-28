@@ -31,15 +31,19 @@ ui = shinyUI(
     
     mainPanel(
       
-      h3("Annual species occupancy estimates"),
+      p("This app presents outputs that are avaialble from the following NERC EIDC repository:
+        https://catalogue.ceh.ac.uk/documents/0ec7e549-57d4-4e2d-b2d3-2199e1578d84"),
       
-      p("This figure shows a plot of average UK occupancy for the selected species.  The
+      
+    
+      h3("Annual species occupancy and detection estimates"),
+      
+      p("Two plots are presented here.  The first shows a plot of average UK occupancy for the selected species.  The
         points represent the average occupancy for each year.  The grey shaded area represents
-        the uncertainty around the estimate in the form of the 95% credible interval.  The 
-        number of records contributing to the estimates are shown in the plot title.  The rhat value
-        represents whether the estimate has converged or not.  Grey points along the top of the plot
-        represent those year with data contributing to the estimate in that year, years without data
-        are estimated as a combination of a prior and data in the surrounding years.  Please see
+        the uncertainty around the estimate in the form of the 95% credible interval. The second shows a plot of the
+        detection probabilities over time.  The rhat value represents whether the estimate has converged or not.  
+        Grey points along the top of the plot represent those year with data contributing to the estimate in that year, 
+        years without data are estimated as a combination of a prior and data in the surrounding years.  Please see
         the relevant papers for details on methods.
         
         "),
@@ -68,7 +72,7 @@ ui = shinyUI(
       p("If you use the data presented in this app or in the associated papers, please use
         the following citations:
         
-        ")
+        add in refs here when available")
       
       
       )
