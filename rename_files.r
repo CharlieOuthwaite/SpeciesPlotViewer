@@ -34,3 +34,38 @@ for(file in files){
 }
 
 
+
+files <- list.files(plot_dir)
+
+
+namecheck <- read.csv("data/All_species_table.csv")
+
+
+for(file in files[c(19,20,21,22,23,24,27,28,32)]){
+  
+  plots <- list.files(paste0(plot_dir, "/", file))
+  
+  for(plot in plots){
+    
+    plotname <- sub(".png", "", plot)
+    
+    fullname <- namecheck[namecheck$NAME_USED == plotname, "SPECIES_NAME"]
+    
+    
+    
+    file.rename(paste0(plot_dir, "/", file, "/", plot), paste0(plot_dir, "/", file, "/", fullname[1], ".png"))
+  }  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

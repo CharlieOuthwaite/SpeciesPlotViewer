@@ -67,7 +67,7 @@ server = shinyServer(function(input, output) {
     
     
     #just select those for this group
-    sp_list <- good_sp[good_sp$GROUP == input$group, ]
+    sp_list <- good_sp[good_sp$Group == input$group, ]
     
     # what are the species names for in the drop down menu?
     species_names <- as.character(sp_list$Species)
@@ -88,7 +88,7 @@ server = shinyServer(function(input, output) {
     
     
     output_dir <- paste(plot_dir, "/", input$group, sep = "")
-    
+    #  output_dir <- paste(plot_dir, "/", "Ants", sep = "")
     
     
     
@@ -97,7 +97,7 @@ server = shinyServer(function(input, output) {
     
     
     # add on the name of the species
-    plot_file <- paste0(output_dir, "/", good_sp[good_sp$SPECIES_NAME == input$species_name, 'SPECIES'], "_yearly_occ.png")
+    plot_file <- paste0(output_dir, "/", good_sp[good_sp$Species == input$species_name, 'Species'], ".png")
     
     
     return(list(
