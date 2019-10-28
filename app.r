@@ -44,9 +44,7 @@ ui = shinyUI(
         detection probabilities over time.  The rhat value represents whether the estimate has converged or not.  
         Grey points along the top of the plot represent those year with data contributing to the estimate in that year, 
         years without data are estimated as a combination of a prior and data in the surrounding years.  Please see
-        the relevant papers for details on methods.
-        
-        "),
+        the relevant papers for details on methods."),
       
       
       imageOutput("sp_plot"), #put plot item in main area
